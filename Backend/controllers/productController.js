@@ -28,7 +28,7 @@ const addProduct = async (req, res) => {
         let result = await cloudinary.uploader.upload(item.path, {
           resource_type: "image",
         });
-        return res.secure_url;
+        return result.secure_url;
       }),
     );
 
@@ -50,7 +50,6 @@ const addProduct = async (req, res) => {
 
     res.json({ success: true, message: "Product Added" });
   } catch (error) {
-    console.log(error);
     res.json({ success: false, message: error.message });
   }
 };
